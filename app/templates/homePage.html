@@ -3,11 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/homePage.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/common.css')}}">
     <title>Document</title>
 </head>
 <body>
     
-    <h1>GG!</h1>
+<div class="main-container">
+<!------------------------------------------------ HEADER ------------------------------------------------>
+    <div class="header">
+        <div id="clock-container">
+           <div id="clock">-</div>
+       </div>
+
+        <div class="path-area">
+            <div class="path">
+                <div>
+                    <a href="admin_main_page.html">/Home</a>
+                </div>
+                <div>
+                    <a href="admin_main_page.html">/. . .</a>
+                </div>
+            </div>
+        </div>
+        <div class="options">
+            <div class="profile">
+                <div>
+                    <img src="{{url_for('static',filename='resources/RedOlha.png')}}">
+                    <img src="../static/resources/Red0lha.png">
+                </div>
+            </div>
+        </div>
+    </div>
+<!------------------------------------------------ ASIDE ------------------------------------------------>
+    <div class="aside">
+        <div class="logo">
+          <div>
+            <img src="../Resources/Images/Red0lha.svg">
+            <span>RedOlha</span>
+          </div>
+        </div>
+        <div class="menu-options1">
+            <div>
+                <ul>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../Resources/icons/home-alt-2.svg">
+                            <span>Home</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../Resources/icons/eye-alt.svg">
+                            <span>Monitoring</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../Resources/icons/calendar-detail.svg">
+                            <span>Manutention</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../Resources/icons/calculator.svg">
+                            <span>Subneting</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../Resources/icons/alert-triangle.svg">
+                            <span>Alerts</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../Resources/icons/spanner.svg">
+                            <span>Administration</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="menu-options2">
+            <div>
+                <ul>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../Resources/icons/user.svg">
+                            <span>User</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../Resources/icons/cog.svg">
+                            <span>Settings</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../Resources/icons/arrow-out-right-square-half.svg">
+                            <span>Log-out</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+<!------------------------------------------------ MAIN ------------------------------------------------>
+    <div class="main">
+        <div class="main-area">
+            <div class="area1">
+               <div class="monitoring">
+                    <div class="header">
+                        <div class="icon"><div><img style="height: 100%;" src="../static/resources/icons/chart-sine.svg"></div></div>
+                        <div class="tittle"><span>Monitoring</span></div>
+                    </div>
+                    <div class="description">
+                        <span>Monitore a sua rede, ativos de rede, rede da rede em tempo real</span>
+                    </div>
+                    <div class="button">
+                        <button><img src="../static/resources/icons/caret-big-right.svg"></button>
+                    </div>
+               </div>
+               <div class="manutention">
+                    <div class="header">
+                        <div class="icon"><div><img style="height: 100%;" src="../static/resources/icons/spanner-white.svg"></div></div>
+                        <div class="tittle"><span>Manutention</span></div>
+                    </div>
+                    <div class="description">
+                        <span>Monitore a sua rede, ativos de rede, rede da rede em tempo real</span>
+                    </div>
+                    <div class="button">
+                        <button><img src="../static/resources/icons/caret-big-right.svg"></button>
+                    </div>
+               </div>
+               <div class="alerts">
+                    <div class="header">
+                        <div class="icon"><div><img style="height: 100%;" src="../static/resources/icons/bell.svg"></div></div>
+                        <div class="tittle"><span>Alerts</span></div>
+                    </div>
+                    <div class="description">
+                        <span>Monitore a sua rede, ativos de rede, rede da rede em tempo real</span>
+                    </div>
+                    <div class="button">
+                        <button><img src="../static/resources/icons/caret-big-right.svg"></button>
+                    </div>
+               </div>
+               <div class="netPlanning">
+                    <div class="header">
+                        <div class="icon"><div><img style="height: 100%;" src="../static/resources/icons/calculator-white.svg"></div></div>
+                        <div class="tittle"><span>Network Planning</span></div>
+                    </div>
+                    <div class="description">
+                        <span>Monitore a sua rede, ativos de rede, rede da rede em tempo real</span>
+                    </div>
+                    <div class="button">
+                        <button><img src="../static/resources/icons/caret-big-right.svg"></button>
+                    </div>
+               </div>
+            </div>
+            <div class="area2">
+               
+            </div>
+        </div>
+    </div>
+<!------------------------------------------------ FOOTER ------------------------------------------------>
+    <div class="footer">
+        
+    </div>
+</div>
+
+    <a href="{{url_for('logout')}}">Logout</a>
 
 </body>
 </html>

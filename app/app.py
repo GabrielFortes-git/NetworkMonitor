@@ -16,8 +16,8 @@ login_manager.login_view = "login"
 @login_manager.user_loader # User load callback - used to reload this objects from the user id stored in the session
 def load_user(user_id):
     conn = dbconfig.dbConnection()
-    cursor = conn.cursor()
-    cursor.execute("SELECT id FROM system_users WHERE username=%s", (user_id,))
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM system_users WHERE id=%s", (user_id,))
     user = cursor.fetchone()
     cursor.close()
     conn.close()
@@ -71,33 +71,40 @@ def home():
 @app.route("/homePage")
 @login_required
 def homePage():
-    return render_template("homePage.html", methods=['GET','POST'])
+    return render_template("homePage.html",username=current_user.username)
 
 @app.route("/login", methods=['GET','POST'])
 def login():
     form = LoginForm()
 
-    if form.validate_on_submit():
+    if (form.validate_on_submit()):
         conn = dbconfig.dbConnection()
         cursor = conn.cursor(dictionary=True)
         cursor.execute("SELECT * FROM system_users WHERE username = %s",(form.username.data,))
         user = cursor.fetchone()
         cursor.close()
+        conn.close()
         if(user):
             if (bcrypt.check_password_hash(user["password"] , form.password.data,)):
                 login_user(User(user["id"], user["username"], user["password"]))
                 return redirect(url_for('homePage'))
 
-        
-
     return render_template("login.html", form=form)
+
+@app.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
+
+
 
 @app.route("/register", methods=['GET','POST'])
 def register():
     form = RegisterForm()
 
     if form.validate_on_submit():
-        hashed_password = bcrypt.generate_password_hash(form.password.data) # Create a hashed version of the password;
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8') # Create a hashed version of the password;
 
         try:
             conn = dbconfig.dbConnection()
