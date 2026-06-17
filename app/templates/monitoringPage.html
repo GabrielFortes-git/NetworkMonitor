@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<head>
+  <title>Pusher Test</title>
+  <link rel="stylesheet" href="{{url_for('static',filename='css/monitoringPage.css')}}">
+  <link rel="stylesheet" href="{{url_for('static',filename='css/common.css')}}">
+  <script src="https://js.pusher.com/8.4.0/pusher.min.js"></script>
+  <!-- <script>
+
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('883a684e6a32327da427', {
+      cluster: 'eu'
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(data) {
+      alert(JSON.stringify(data));
+    });
+  </script> -->
+</head>
+<body>
+
+ 
+<div class="main-container">
+<!------------------------------------------------ HEADER ------------------------------------------------>
+    <div class="header">
+        <div id="clock-container">
+           <div id="clock">00:00:00</div>
+       </div>
+
+        <div class="path-area">
+            <div class="path">
+                <div>
+                    <a href="admin_main_page.html">/Home</a>
+                </div>
+                <div>
+                    <a href="admin_main_page.html">/Monitoring</a>
+                </div>
+            </div>
+        </div>
+        <div class="options">
+            <div class="profile">
+                <div>
+                    <img src="../static/resources/icons/user.svg">
+                </div>
+            </div>
+        </div>
+    </div>
+<!------------------------------------------------ ASIDE ------------------------------------------------>
+    <div class="aside">
+        <div class="logo">
+          <div>
+            <img src="../static/resources/Images/Red0lha.svg">
+            <span>RedOlha</span>
+          </div>
+        </div>
+        <div class="menu-options1">
+            <div>
+                <ul>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../static/resources/icons/home-alt-2.svg">
+                            <span>Home</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../static/resources/icons/eye-alt.svg">
+                            <span>Monitoring</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../static/resources/icons/calendar-detail.svg">
+                            <span>Manutention</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../static/resources/icons/calculator.svg">
+                            <span>Subneting</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../static/resources/icons/alert-triangle.svg">
+                            <span>Alerts</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../static/resources/icons/spanner.svg">
+                            <span>Administration</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="menu-options2">
+            <div>
+                <ul>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../static/resources/icons/user.svg">
+                            <span>User</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../static/resources/icons/cog.svg">
+                            <span>Settings</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../static/resources/icons/arrow-out-right-square-half.svg">
+                            <span>Log-out</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+<!------------------------------------------------ MAIN ------------------------------------------------>
+    <div class="main">
+        <div class="main-area">
+            <!----- Network Data ------->
+             <div class="networkData white-card">     
+                  <div>
+                    <div class="icon"><img src="../static/resources/icons/arrow-in-up-square-half.svg"></div>
+                    <div>
+                        <div class="title"><span>Bytes Enviados</span></div>
+                        <div class="content">
+                            <div><span id="bytesEnviados">-</span></div>
+                            <div><span>GB</span></div>
+                        </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="icon"><img src="../static/resources/icons/arrow-out-down-square-half.svg"></div>
+                    <div>
+                        <div class="title">Bytes Recebidos</div>
+                        <div class="content">
+                            <div><span id="bytesRecebidos">-</span></div>
+                            <div>GB</div>
+                        </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="icon"><img src="../static/resources/icons/arrow-in-up-square-half.svg"></div>
+                    <div>
+                        <div class="title">Pacotes Enviados</div>
+                        <div class="content">
+                            <div><span id="pacotesEnviados">-</span></div>
+                            <div>M</div>
+                        </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="icon"><img src="../static/resources/icons/arrow-out-down-square-half.svg"></div>
+                    <div>
+                        <div class="title">Pacotes Recebidos</div>
+                        <div class="content">
+                            <div><span id="pacotesRecebidos">-</span></div>
+                            <div>M</div>
+                        </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="icon"><img src="../static/resources/icons/x.svg"></div>
+                    <div>
+                        <div class="title">Erros</div>
+                        <div class="content">
+                            <div><span id="erros">-</span></div>
+                            <div></div>
+                        </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="icon"><img src="../static/resources/icons/trash.svg"></div>
+                    <div>
+                        <div class="title">Descartes</div>
+                        <div class="content">
+                            <div><span id="descartes">-</span></div>
+                            <div></div>
+                        </div>
+                    </div>
+                  </div>
+            </div>
+            <!----- Speed Test Data ------>
+            <div class="speedTestData">
+                <div class="download">
+                    <div class="left-area">
+                        <div><span>Download</span></div>
+                        <div>
+                            <div><span id="download"></span></div>
+                            <div><span>Mbps</span></div>
+                        </div>
+                    </div>
+                    <div class="right-area"><img  src="../static/resources/Images/folder.png"></div>
+                </div>
+                <div class="upload">
+                    <div class="left-area">
+                        <div><span>Upload</span></div>
+                        <div>
+                            <div><span id="upload"></span></div>
+                            <div><span>Mbps</span></div>
+                        </div>
+                    </div>
+                    <div class="right-area"><img  src="../static/resources/Images/upload.png"></div>
+                </div>
+                <div class="ping">
+                    <div class="left-area">
+                        <div><span>Ping</span></div>
+                        <div>
+                            <div><span id="ping"></span></div>
+                            <div><span>ms</span></div>
+                        </div>
+                    </div>
+                    <div class="right-area"><img  src="../static/resources/Images/bandwidth.png"></div>
+                </div>
+                <div class="bandwidth">
+                    <div class="left-area">
+                        <div><span>Bandwidth</span></div>
+                        <div>
+                            <div><span id="bandwidth">10.1</span></div>
+                            <div><span>Mbps</span></div>
+                        </div>
+                    </div>
+                    <div class="right-area"><img  src="../static/resources/Images/speedometer.png"></div>
+                </div>
+            </div>
+            <!------ Agents & Devices ------>
+            <div class="network-devices">
+                <div class="agents">
+                    <div class="defaultGateway white-card">
+                <div class="title">
+                    <div class="left"><span>Interfaces do Default Gateway</span></div>
+                    <div class="right"><button>Ver Todos</button><div class="left"></div></div>
+                </div>
+                <div class="content">
+                    <table>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Tipo</th>
+                            <th>Velocidade</th>
+                            <th>Status</th>
+                            <th>Pacotes Enviados</th>
+                            <th>Pacotes Recebidos</th>
+                        </tr>
+                        <tr>
+                            <td>lan_int2_if</td>
+                            <td>111</td>
+                            <td>1233</td>
+                            <td>111</td>
+                            <td>161</td>
+                            <td>131</td>
+                            
+                        </tr>
+                         <tr>
+                            <td>lan_int2_if</td>
+                            <td>111</td>
+                            <td>1233</td>
+                            <td>111</td>
+                            <td>161</td>
+                            <td>131</td>
+                            
+                        </tr>
+                         <tr>
+                            <td>lan_int2_if</td>
+                            <td>111</td>
+                            <td>1233</td>
+                            <td>111</td>
+                            <td>161</td>
+                            <td>131</td>
+                            
+                        </tr>
+                         <tr>
+                            <td>lan_int2_if</td>
+                            <td>111</td>
+                            <td>1233</td>
+                            <td>111</td>
+                            <td>161</td>
+                            <td>131</td>
+                          
+                        </tr>
+                          <tr>
+                            <td>lan_int2_if</td>
+                            <td>111</td>
+                            <td>1233</td>
+                            <td>111</td>
+                            <td>161</td>
+                            <td>131</td>
+                          
+                        </tr>
+                        
+                       
+                      </table>
+                </div>
+                <div class="pagination"></div>
+            </div>
+                </div>
+                <div class="devices white-card">
+                    <div class="title">
+                        <div class="left"><span>Network Devices</span></div>
+                        <div class="right"><button>Ver Todos</button></div>
+                    </div>
+                    <div id="networkDevicesContainer" class="content">
+                        <!-- <div>
+                            <div class="icon"><img src="../static/resources/icons/siren-alt.svg"></div>
+                            <div class="name"><span>Lenovo</span></div>
+                            <div class="ip-address"><span>192.168.1.11</span></div>
+                            <div class="mac-address"><span>ff:ff:ff:ff:ff:ff</span></div>
+                            <div class="state"><div></div></div>
+                        </div> -->
+                        
+                    </div>
+                    <div class="state-briefing">
+                        <div class="total">
+                            <div><div></div></div>
+                            <div><span>Total</span></div>
+                            <div><span>10</span></div>
+                        </div>
+                        <div class="online">
+                            <div><div></div></div>
+                            <div><span>Online</span></div>
+                            <div><span>10</span></div>
+                        </div>
+                        <div class="offline">
+                            <div><div></div></div>
+                            <div><span>Offline</span></div>
+                            <div><span>10</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--------- Default Gateway------------>
+           
+        </div>
+    </div>
+<!------------------------------------------------ FOOTER ------------------------------------------------>
+    <div class="footer">
+
+    </div>
+
+<!----------------------- FLOATING PAGES ------------------------->
+
+    <!-- <div class="networkDevicesFloatingPage">
+        <div class="networkDevicesArea">
+            <div class="label">
+                <span>Network Devices</span>
+                <button type="button">Exit</button>
+            </div>
+            <div class="filter">
+                <div><span>Todos</span></div>
+                <div><span>Ativos</span></div>
+            </div>
+            <div id="networkDevicesAreaContainer" class="content">
+                <div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+
+</div>
+
+    <script src="{{url_for('static', filename='js/monitoringPage.js')}}"></script>
+
+<!------------------- CHARTS --------------------->
+<!-- 
+<script>
+    var options = {
+          series: [{
+          name: 'series1',
+          data: [31, 40, 28, 51, 42, 109, 100]
+        }, {
+          name: 'series2',
+          data: [11, 32, 45, 32, 34, 52, 41]
+        }
+    ],
+          chart: {
+          height: 200,
+          type: 'area'
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          curve: 'smooth'
+        },
+        xaxis: {
+          type: 'datetime',
+          categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+        },
+        tooltip: {
+          x: {
+            format: 'dd/MM/yy HH:mm'
+          },
+        },
+        
+        };
+
+        var chart1 = new ApexCharts(document.querySelector("#chart1"), options);
+        chart1.render();
+</script> -->
+
+
+
+
+
+</body>

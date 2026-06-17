@@ -10,6 +10,7 @@ from scapy.all import ARP, Ether, srp
 from manuf import manuf
 import schedule
 import classes
+import pusher
 
 
 ROUTER = '192.168.1.254'    # Next step: Find default gateway;
@@ -349,7 +350,6 @@ def obtainDefaultGatewayInterfacesData():
                 interfaces.append(interface)
      
         classes.DefaultGateway.insertInterfacesData(interfaces)
-        print("Data retrived from router sucessefully inserted in correspondent table")
 
     except Exception as e:
         print(f"ERROR: Failed to retrive data from router!\nDetails: {e}")  
@@ -378,6 +378,6 @@ schedule.every(20).seconds.do(truncateInterfacesData)
 while(True):
     schedule.run_pending()
     obtainDefaultGatewayInterfacesData()
-    time.sleep(1)
+    time.sleep(5)
 
        

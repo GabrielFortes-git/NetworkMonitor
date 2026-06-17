@@ -1,0 +1,562 @@
+/*================================================ NETWORK ==================================================*/
+
+.main-area{
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    
+}
+
+/*------ Network Data ------*/
+.networkData{
+    display: flex;
+    width: 100%;
+    height: auto;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+    .networkData > div{
+        height: 80px;
+        width: 14%;
+        border-right: solid 1px rgb(194, 194, 194);
+        display: flex;
+    }
+
+        .networkData .icon{
+            height: 100%;
+            width: 20%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+            .networkData .icon > img{
+                height: 100%;
+            }
+
+        .networkData > div > div:nth-child(2){
+            height: 100%;
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+        }
+
+            .networkData .title{
+                width: 100%;
+                height: 40%;
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                color: gray;
+                padding-left: 20px;
+            }
+
+            .networkData .content{
+                width: 100%;
+                height: 60%;
+                display: flex;
+            }
+                .networkData .content > div:nth-child(1){
+                    width: 50%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: end;
+                    padding-right: 20px;
+                    align-items: center;
+                    color: rgb(17, 17, 77);
+                    font-size: 2em;
+                    font-weight: 500;
+                }
+                .networkData .content > div:nth-child(2){
+                    width: 50%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: start;
+                    align-items: center;
+                    font-size: 1em;
+                    color: gray;
+                }
+
+    .networkData > div:nth-child(6){
+        border-right: none;
+    }
+
+
+/*----- Speed Test Data ---------*/
+.speedTestData{
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 30px;
+}
+
+    .speedTestData > div{
+        border-radius: 5px;
+        box-shadow: 2px 2px 10px rgba(209, 209, 209, 0.605);
+    }
+
+    .download{
+        background-color: rgb(236, 240, 24);
+    }
+
+    .upload{
+        background-color: rgba(251, 175, 33, 0.848);
+    }
+
+    .ping{
+        background-color: rgb(141, 136, 236);    
+    }
+    
+    .bandwidth{
+        background-color: rgb(152, 70, 228);
+    }
+
+    .download, .upload, .ping, .bandwidth{
+        height: 120px;
+        width: 25%;
+        display: flex;
+    }
+
+        .left-area{
+            height: 100%;
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+        }
+
+            .left-area > div{
+                width: 100%;
+            }
+
+                .left-area > div:nth-child(1){
+                    height: 30%;
+                    padding: 15px;
+                    color: rgb(7, 7, 7);
+                    font-weight: 600;
+                }
+                .left-area > div:nth-child(2){
+                    height: 70%;
+                    display: flex;
+                }
+
+                    .left-area > div:nth-child(2) > div:nth-child(1){
+                        height: 100%;
+                        width: 50%;
+                        display: flex;
+                        justify-content: end;
+                        align-items: center;
+                        padding: 5px 15px;
+                        color: rgb(9, 9, 91);
+                        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                        font-size: 3em;
+                        font-weight: 600;
+                    }
+
+                    .left-area > div:nth-child(2) > div:nth-child(2){
+                        height: 100%;
+                        width: 50%;
+                        display: flex;
+                        justify-content: start;
+                        align-items: center;
+                        padding: 5px 5px;
+                        color: rgb(255, 255, 255);
+                        font-size: 2em;
+                        font-weight: 600;
+                    }
+             
+
+        .right-area{
+            height: 100%;
+            width: 30%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+
+            .right-area > img{
+                height: 100%;
+            }
+
+.networkData{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    gap: 5px;
+}
+
+    .networkIOCounter{
+        height: 100px;
+        width: 15%;
+        border-radius: 10px;
+        display: flex;
+    }
+
+      
+/*================================================ AGENTS ==================================================*/
+
+.network-devices{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    gap: 30px;
+}
+
+
+
+    .devices{
+        height: 400px;
+        width: 50%;
+        display: flex;
+        flex-direction: column; 
+    }
+
+        .devices .title{
+            height: 12%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: solid 1px rgb(226, 226, 226);
+        }
+
+            .devices .title .left{
+                height: 100%;
+                width: auto;
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                padding-left: 10px;
+                color: gray;
+            }
+
+            .devices .title .right{
+               height: 100%;
+               width: auto; 
+               display: flex;
+               justify-content: end;
+               align-items: center;
+               padding-right: 10px;
+            }
+
+                .devices .title .right > button{
+                    padding: 8px 10px;
+                    background-color: #1e3655;
+                    color: white;
+                    border: none;
+                    border-radius: 5px;
+                }
+
+        .devices .content{
+            height: 73%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding: 15px;
+        }
+
+            .devices .content > div{
+                width: 100%;
+                height: 20%;
+                border-radius: 10px;
+                background-color: rgb(237, 237, 237);
+                display: flex;                                                                                                                              
+            }
+
+            .devices .icon{
+                height: 100%;
+                width: 10%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 10px;
+            }              
+            
+                .devices .icon > img{
+                    height: 100%;
+                }
+
+            .devices .name, .devices .ip-address, .devices .mac-address{
+                height: 100%;
+                width: 26.66%;                 
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: rgb(48, 48, 48);
+
+            }
+
+            .devices .state{
+                height: 100%;
+                width: 10%;
+                display: flex;
+                justify-content: center;
+                align-items: center;        
+            }                      
+            
+                .devices .state > div{
+                    height: 20px;
+                    width: 20px;
+                    border-radius: 50%;
+                    background-color: green;
+                }
+
+        .devices .state-briefing{
+            height: 15%;                        
+            width: 100%;
+            padding: 10px;
+            display: flex;                      
+            justify-content: start;
+            align-items: center;
+            gap: 20px;                      
+            border-top: solid 1px rgb(226, 226, 226);
+        }
+
+            .devices .state-briefing > div{
+                height: 100%;
+                width: 26%;                 
+                display: flex;
+                background-color: rgb(190, 190, 190);
+                border-radius: 10px;                                                                                                                                                                                                                                                                        
+            }
+
+                .devices .state-briefing > div:nth-child(1){background-color: rgb(221, 221, 221);}
+                .devices .state-briefing > div:nth-child(2){background-color: rgb(165, 231, 143);}
+                .devices .state-briefing > div:nth-child(3){background-color: rgb(231, 149, 143);}
+
+                .devices .state-briefing > div > div:nth-child(1){
+                    height: 100%;
+                    width: 20%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                    .devices .state-briefing > div > div:nth-child(1) > div{
+                        height: 20px;
+                        width: 20px;
+                        border-radius: 50%;
+                    }
+
+                        .devices .state-briefing > div:nth-child(1) > div:nth-child(1) > div{background-color: gray;}
+                        .devices .state-briefing > div:nth-child(2) > div:nth-child(1) > div{background-color: rgb(52, 105, 28);}
+                        .devices .state-briefing > div:nth-child(3) > div:nth-child(1) > div{background-color: rgb(98, 7, 7);}
+
+
+
+                .devices .state-briefing > div > div:nth-child(2){
+                    height: 100%;
+                    width: auto ;
+                    display: flex;
+                    justify-content: start;
+                    align-items: center;
+                    padding: 10px;
+                    color: rgb(36, 36, 36);
+                }
+
+                    .devices .state-briefing > div:nth-child(1) > div:nth-child(2), .devices .state-briefing > div:nth-child(1) > div:nth-child(3){color: black;}
+                    .devices .state-briefing > div:nth-child(2) > div:nth-child(2), .devices .state-briefing > div:nth-child(2) > div:nth-child(3){color: rgb(14, 56, 6);}
+                    .devices .state-briefing > div:nth-child(3) > div:nth-child(2), .devices .state-briefing > div:nth-child(3) > div:nth-child(3){color: rgb(84, 9, 9);}
+
+                .devices .state-briefing > div > div:nth-child(3){
+                    height: 100%;
+                    width: 1fr ;
+                    display: flex;
+                    justify-content: start;
+                    align-items: center;
+
+                }
+
+
+ .agents{
+        height: 450px;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+.defaultGateway{
+    height: 400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+    .defaultGateway .title{
+        width: 100%;
+        height: 12%;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: solid 1px rgb(226, 226, 226);
+    }
+
+
+            .defaultGateway .title .left{
+                height: 100%;
+                width: auto;
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                padding-left: 10px;
+                color: gray;
+            }
+
+            .defaultGateway .title .right{
+               height: 100%;
+               width: auto; 
+               display: flex;
+               justify-content: end;
+               align-items: center;
+               padding-right: 10px;
+            }
+
+                 .defaultGateway .title .right > button{
+                    padding: 8px 10px;
+                    background-color: #1e3655;
+                    color: white;
+                    border: none;
+                    border-radius: 5px;
+                }
+
+    .defaultGateway .content{
+        width: 100%;
+        height: 81%;
+    }
+
+        .defaultGateway .content  table{
+            width: 100%;
+            height: 100%;
+            background-color: rgba(192, 211, 255, 0.234);
+            padding: 10px 5px 10px 20px;
+        }
+
+            .defaultGateway .content table tr{
+                height: 20%;
+               
+            }
+
+            .defaultGateway .content table th{
+                text-align: start;
+                color: rgb(5, 5, 51);
+                 text-align: center;
+            }
+
+            .defaultGateway .content  table td{
+                text-align: start;
+                color:rgb(32, 32, 32);
+                text-align: center;
+            }
+
+    .defaultGateway .pagination{
+        width: 100%;
+        height: 7%;  
+        border-top: solid 1px rgb(226, 226, 226);     
+    }
+
+
+.apexcharts-toolbar {
+    z-index: 1 !important;
+}
+
+.apexcharts-menu {
+    z-index: 1 !important;
+}
+
+/*-------------------------- Floating Pages ---------------------------------*/
+
+.networkDevicesFloatingPage{
+    position: fixed;
+    top:0;
+    left:0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.655);
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.networkDevicesArea{
+    height: 70%;
+    width: 70%;
+    border-radius: 10px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+    .networkDevicesArea .label{
+        height: 8%;
+        width: 100%;
+        border-bottom: 1px solid rgb(220, 220, 220);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 20px;
+        color: gray;
+        font-size: 1.3em;
+    }
+
+        .networkDevicesArea .label button{
+            padding: 5px 20px;
+            background-color: rgb(225, 225, 225);
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+        }
+
+    .networkDevicesArea .filter{
+        height: 8%;
+        width: 100%;
+        display: flex;
+    }
+
+        .networkDevicesArea .filter > div{
+            height: 100%;
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgb(92, 92, 92);
+            font-size: 1.1em;
+            background-color: rgb(242, 242, 242);
+            transition: all 1s;
+        }
+
+        .networkDevicesArea .filter > div:hover{
+            background-color: rgb(189, 189, 189);;
+        }
+
+        .networkDevicesArea .filter > div:nth-child(1){
+            border-right: 1px solid rgb(209, 209, 209);
+        }
+
+    .networkDevicesArea .content{
+        height: 92%;
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+        .networkDevicesArea .content > div{
+            height: 200px;
+            width: 200px;
+            border-radius: 10px;
+            background-color: rgb(230, 230, 230);
+            border: 1px solid rgb(193, 193, 193);
+        }

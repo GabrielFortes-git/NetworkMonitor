@@ -1,10 +1,14 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, jsonify
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length, ValidationError
 from flask_bcrypt import Bcrypt
 import dbconfig
+import threading
+import os
+import classes
+
 
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
@@ -120,7 +124,51 @@ def register():
 
 
     return render_template("register.html", form=form)
+
+
+@app.route("/monitoring", methods=['GET','POST'])
+def monitoring():
+    return render_template("monitoringPage.html")
+
+
+# -------------- API -------------------------
+@app.route("/api/<resource>")
+def get_resource(resource):
+
+    if resource == "homePageData":
+        speedTestData = classes.SpeedTestData.getSpeedTestData()
+        numberOfDevices = classes.Devices.getNumberOfDevices()
+        packetStats = classes.IOCounters.getPacketStats()
+        devicesData = classes.Devices.getDevicesData()
+        alerts = classes.Alerts.getAlerts()
+
+        data = [speedTestData,numberOfDevices,packetStats, devicesData, alerts]
+
+    elif resource == "monitoringPageData":
+       
+        speedTestData = classes.SpeedTestData.getSpeedTestData()
+        devicesData = classes.Devices.getDevicesData()
+        IOCountersData = classes.IOCounters.getIOCountersData()
+        deviceSpecifications = classes.DiviceEspecifications.getSpecifications()
+        cpuTimes = classes.CPUTimes.getCPUTimes()
+        cpuStats = classes.CPUTStats.getCPUStats()
+        cpuFrequency = classes.CPUFrequency.getCPUFrequency()
+        avgSysLoad = classes.AverageSystemLoad.getAVGSystemLoad()
+        virtualMemory = classes.VirtualMemory.getVirtualMemory()
+        swapMemory = classes.SwapMemory.getSWAPMemory()
+        diskUsage = classes.DiskUsage.getDiskUsage()
+        otherMetrics = classes.OtherMetrics.getOtherMetrics()
+        defaultGateway = classes.DefaultGateway.getDefaultGatewayData()
+        defaultGatewayInterfaces = classes.DefaultGateway.getDefaultGatewayInterfacesData(5)
+
+        data = [speedTestData, devicesData, IOCountersData, deviceSpecifications, cpuTimes, cpuStats, cpuFrequency, avgSysLoad, virtualMemory, swapMemory, diskUsage, otherMetrics, defaultGateway, defaultGatewayInterfaces]
+
+    else:
+        return {"error": "Recurso não existe"}, 404
+
+
+    return jsonify(data)
  
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5555, debug = True)
+    app.run(host="0.0.0.0", port=5555, debug=True)
