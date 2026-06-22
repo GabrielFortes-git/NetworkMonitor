@@ -4,19 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}">
 </head>
 <body>
 
-    <div>
-        <form method="POST">
-            {{ form.hidden_tag()}}
-            {{ form.username}}
-            {{ form.password}} 
-            {{ form.submit}}
-            <!-- Define a class -> {{form.username(class="input-username")}} -->
-        </form>
-    </div>
-    <a href="{{url_for('register')}}">Register</a>
+    <div class="container">
+        <div class="tittle">
+            <h1>Login</h1>
+        </div>
+        <div class="form-area">
+            <form method="POST">
+                {{ form.hidden_tag()}}
+                {{ form.username(class="input")}}
+                {{ form.password(class="input")}} 
+                {{ form.submit(class="submit")}}
+                <!-- Define a class -> {{form.username(class="input-username")}} -->
+            </form>
+        </div>
+        <div class="link">
+            <p>Dont have an account. <a href="{{url_for('register')}}">Register</a></p>
+        </div>
+    </div>  
     
 </body>
 </html>

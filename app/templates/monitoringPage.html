@@ -4,6 +4,7 @@
   <link rel="stylesheet" href="{{url_for('static',filename='css/monitoringPage.css')}}">
   <link rel="stylesheet" href="{{url_for('static',filename='css/common.css')}}">
   <script src="https://js.pusher.com/8.4.0/pusher.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
   <!-- <script>
 
     // Enable pusher logging - don't include this in production
@@ -52,7 +53,6 @@
         <div class="logo">
           <div>
             <img src="../static/resources/Images/Red0lha.svg">
-            <span>RedOlha</span>
           </div>
         </div>
         <div class="menu-options1">
@@ -335,7 +335,129 @@
                     </div>
                 </div>
             </div>
-            <!--------- Default Gateway------------>
+            <!--------- Machine Data------------>
+            <div class="machine-data bottom-area">
+                 <div class="agent-details">
+                    <div class="machine-info white-card">
+                        <div class="icon"><img src="../static/resources/Images/laptop.png" height="100%"></div>
+                        <div class="details">
+                            <div> <span >Modelo:</span> <span id="machine-model">Aspire A114-32 </span> </div>
+                            <div> <span >Fabricante:</span> <span id="machine-manufacturer">Acer</span> </div>
+                            <div> <span >OS:</span> <span id="machine-os">Linux</span> </div>
+                            <div> <span >Versão:</span> <span id="machine-version">6.17.0-20-generic</span> </div>
+                            <div> <span >State:</span> <span id="machine-state">up</span> </div>
+                        </div>
+                    </div>
+                    <div class="battery-percent white-card">
+                        <div class="label"><span>Bateria</span></div>
+                        <div id="chartContainerBattery" class="chart-area"></div>
+                    </div>
+                    <div class="disk-usage white-card">
+                        <div class="label"><span>Uso de Disco</span></div>
+                        <div>
+                            <div class="disk-info"> <div> <span>Total</span> <span id="totalDiskUsage">510 GB</span> </div></div>
+                            <div id="chartContainerDisk" class="chart-area"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="agent-metrics">
+                    <div class="chart-container cpu-utilization white-card">
+                        <div class="label"><span>CPU</span></div>
+                        <div id="chartContainerCPU" class="chart-area"></div>
+                    </div>
+                    <div class="chart-container ram-utilization white-card">
+                        <div class="label"><span>Memória RAM</span></div>
+                        <div id="chartContainerRAM" class="chart-area"></div>
+                    </div>
+                    <div class="swap-memory white-card">
+                        <div class="label"><span>Memória SWAP</span></div>
+                        <div id="chartContainerSWAP" class="chart-area"></div>
+                    </div>
+                </div>
+                <div class="cpu-metrics">
+                    <div class="cpu-frequency white-card">
+                        <div class="label"><span>Frequência CPU</span></div>
+                        <div>
+                            <div class="frequency-info">
+                                <div> <span>Min:</span> <span id="cpuMaxFrequency">800</span> </div>
+                                <div> <span>Max:</span> <span id="cpuMinFrequency">2600</span> </div>
+                            </div>
+                            <div id="chartContainerCPUFreq" class="char-area"></div>
+                        </div>
+                    </div>
+                    <div class="cpu-times white-card">
+                        <div class="label"><span>CPU Times</span></div>
+                        <div class="content">
+                            <div>
+                                <div><span>User</span></div>
+                                <div><span id="cpuTimesUser">14.0 s</span></div>
+                            </div>
+                            <div>
+                                <div><span>Nice</span></div>
+                                <div><span id="cpuTimesNice">14.0 s</span></div>
+                            </div>
+                            <div>
+                                <div><span>System</span></div>
+                                <div><span id="cpuTimesSystem">14.0 s</span></div>
+                            </div>
+                            <div>
+                                <div><span>Idel</span></div>
+                                <div><span id="cpuTimesIdel">14.0 s</span></div>
+                            </div>
+                            <div>
+                                <div><span>Iowait</span></div>
+                                <div><span id="cpuTimesIowait">14.0 s</span></div>
+                            </div>
+                            <div>
+                                <div><span>Irq</span></div>
+                                <div><span id="cpuTimesIrq">14.0 s</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cpu-stats white-card">
+                        <div class="label"><span>CPU Stats</span></div>
+                        <div class="content">
+                           <div>
+                                <div><span>Ctx Switches</span></div>
+                                <div><span id="cpuStatsSwitches">4623524324</span></div>
+                           </div>
+                           <div>
+                                <div><span>Interrupts</span></div>
+                                <div><span id="cpuStatsInterrupts">4623524324</span></div>
+                           </div>
+                           <div>
+                                <div><span>Soft Interrupts</span></div>
+                                <div><span id="cpuStatsSoftInterrupts">4623524324</span></div>
+                           </div>
+                           <div>
+                                <div><span>Syscalls</span></div>
+                                <div><span id="cpuStatsSyscalls">4623524324</span></div>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="net-metrics">
+                    <div class="avg-sys-load white-card">
+                        <div class="label"><span>Average System Load</span></div>
+                            <div id="chartContainerSysLoad" class="chart-area">
+                          
+                        </div>
+                    </div>
+                    <div class="net-connection white-card">
+                         <div class="label"><span>Network Stats</span></div>
+                            <div class="content">
+                                <div> <span>Bytes Send</span> <span id="bytesSend">1313</span> </div>
+                                <div> <span>Bytes Revc</span> <span id="bytesRecv">1313</span> </div>
+                                <div> <span>Packets Send</span> <span id="packetsSend">1313</span> </div>
+                                <div> <span>Packets Revc</span> <span id="packetsRecv">1313</span> </div>
+                                <div> <span>Errin</span> <span id="errin">1313</span> </div>
+                                <div> <span>Errout</span> <span id="errout">1313</span> </div>
+                                <div> <span>Dropin</span> <span id="dropin">1313</span> </div>
+                                <div> <span>Dropout</span> <span id="dropout">1313</span> </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
            
         </div>
     </div>
